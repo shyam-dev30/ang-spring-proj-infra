@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+metadata:
+ name: com-backend-app
+ labels:
+  app: com-backend-app
+spec:
+ selector:
+  matchLabels:
+   app: com-backend-app
+ replicas: 2
+ template:
+  metadata:
+   labels:
+    app: com-backend-app
+  spec:
+   containers:
+    - name: com-backend-app
+      image: shyam30/com-backend:${BUILD_ID}
+      ports:
+       - containerPort: 8080
+
+      
