@@ -13,12 +13,12 @@ pipeline{
         }
         stage('deploy'){
             steps{
-                script{
+                sh'''
                     docker build -t shyam30/com-backend:${BUILD_ID} .
                     docker push shyam30/com-backend:${BUILD_ID}
                     docker rmi shyam30/com-backend:${BUILD_ID}
                     kubectl apply -f ./yaml/Deployment.yaml
-                }
+                '''
             }
         }
     }
